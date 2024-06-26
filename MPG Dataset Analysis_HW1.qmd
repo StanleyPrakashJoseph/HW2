@@ -13,7 +13,7 @@ The `mpg` dataset from the built-in R contains data on fuel economy for 38 popul
 
 # Data Summary
 
-**Before diving into the plot, let's look at a brief statistics of the dataset:**
+**Let's look into a brief statistics of the dataset:**
 
 ```{r echo=FALSE}
 #| warning: false
