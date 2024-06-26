@@ -1,0 +1,86 @@
+---
+title: "MPG Dataset Analysis"
+author: "Stanley Prakash | 23200443"
+format: html
+editor: visual
+---
+
+# Introduction
+
+The `mpg` dataset from the built-in R contains data on fuel economy for 38 popular car models. The variables include manufacturer, model, year, engine displacement, and fuel efficiency in miles per gallon (mpg).
+
+# Data Summary
+
+**Before diving into the plot, let's look at a brief statistics of the dataset:**
+
+```{r echo=FALSE}
+#| warning: false
+library(dplyr)
+library(datasets)
+library(ggplot2)
+
+# Loading the dataset
+data("mpg")
+
+# Calculating summary statistics
+summary_stats <- mpg %>%
+  summarise(
+    Mean = mean(hwy),
+    Median = median(hwy),
+    SD = sd(hwy),
+    Mean_1 = mean(cty),
+    Median_1 = median(cty),
+    SD_1 = sd(cty)
+  )
+
+# Creating a summary data frame
+summary_1 <- data.frame(
+  Statistic = c('Mean', 'Median', 'Standard Deviation'),
+  Highway_MPG = c(summary_stats$Mean, summary_stats$Median, summary_stats$SD),
+  Engine_Displacement = c(summary_stats$Mean_1, summary_stats$Median_1, summary_stats$SD_1)
+)
+
+# Printing summary statistics 
+print(summary_1)
+
+```
+
+-   **Number of observations**: 234
+-   **Number of variables**: 11
+-   **Variables**:
+    -   `manufacturer`: Car manufacturer
+    -   `model`: Model of the car
+    -   `year`: Year of manufacture
+    -   `displ`: Engine displacement (liters)
+    -   `hwy`: Highway miles per gallon
+    -   `cty`: City miles per gallon
+    -   `class`: Vehicle class (e.g., compact, SUV)
+
+# Plot: Highway MPG vs. Engine Displacement
+
+Below is a scatter plot showing the relationship between engine displacement (`displ`) and highway miles per gallon (`hwy`). Generally, as engine displacement increases, highway mpg decreases, indicating that larger engines tend to be less fuel-efficient.
+
+```{r echo=FALSE}
+# Creating the plot
+plot <- ggplot(mpg, aes(x = displ, y = hwy, color = class)) +
+  geom_point() +
+  labs(title = "Highway MPG vs Engine Displacement",
+       x = "Engine Displacement (liters)",
+       y = "Highway Miles per Gallon",
+       color = "Car Class") +
+  theme_minimal()
+
+# Displaying the plot
+print(plot)
+
+```
+
+As observed, there is an inverse relationship between engine displacement and highway mpg. This trend is common as larger engines typically consume more fuel.
+
+# 
+
+# Conclusion
+
+The plot effectively illustrates the negative correlation between engine displacement and highway miles per gallon. This insight can be useful for consumers looking to purchase fuel-efficient vehicles and for manufacturers aiming to improve fuel economy in their car models.
+
+## 
