@@ -5,6 +5,8 @@ format: html
 editor: visual
 ---
 
+# Assignment 1 :
+
 # Introduction
 
 The `mpg` dataset from the built-in R contains data on fuel economy for 38 popular car models. The variables include manufacturer, model, year, engine displacement, and fuel efficiency in miles per gallon (mpg).
